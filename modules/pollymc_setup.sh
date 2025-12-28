@@ -16,7 +16,7 @@
 
 # setup_polymc: Configure PolyMC as the primary launcher for splitscreen gameplay
 #
-# POLLYMC ADVANTAGES FOR SPLITSCREEN:
+# POLYMC ADVANTAGES FOR SPLITSCREEN:
 # - No forced Microsoft login requirements (offline-friendly)
 # - Better handling of multiple simultaneous instances
 # - Cleaner interface without authentication popups
@@ -39,7 +39,7 @@ setup_polymc() {
     print_progress "Downloading PolyMC for optimized splitscreen gameplay..."
 
     # =============================================================================
-    # POLLYMC DIRECTORY INITIALIZATION
+    # POLYMC DIRECTORY INITIALIZATION
     # =============================================================================
 
     # Create PolyMC data directory structure
@@ -48,7 +48,7 @@ setup_polymc() {
     mkdir -p "$HOME/.local/share/PolyMC"
 
     # =============================================================================
-    # POLLYMC APPIMAGE DOWNLOAD AND VERIFICATION
+    # POLYMC APPIMAGE DOWNLOAD AND VERIFICATION
     # =============================================================================
 
     # Download PolyMC AppImage from official GitHub releases
@@ -68,14 +68,14 @@ setup_polymc() {
     if ! wget -O "$HOME/.local/share/PolyMC/PolyMC-Linux-x86_64.AppImage" "$polymc_url"; then
         print_warning "❌ PolyMC download failed - continuing with PrismLauncher as primary launcher"
         print_info "   This is not a critical error - PrismLauncher works fine for splitscreen"
-        USE_POLLYMC=false  # Global flag tracks which launcher is active
+        USE_POLYMC=false  # Global flag tracks which launcher is active
         return 0
     else
         # APPIMAGE PERMISSIONS: Make the downloaded AppImage executable
         # AppImages require execute permissions to run properly
         chmod +x "$HOME/.local/share/PolyMC/PolyMC-Linux-x86_64.AppImage"
         print_success "✅ PolyMC AppImage downloaded and configured successfully"
-        USE_POLLYMC=true  # Mark PolyMC as available for further setup
+        USE_POLYMC=true  # Mark PolyMC as available for further setup
     fi
 
     # =============================================================================
@@ -122,7 +122,7 @@ setup_polymc() {
     fi
 
     # =============================================================================
-    # POLLYMC CONFIGURATION: Skip Setup Wizard
+    # POLYMC CONFIGURATION: Skip Setup Wizard
     # =============================================================================
 
     # SETUP WIZARD BYPASS: Create PolyMC configuration using user's proven working settings
@@ -165,10 +165,10 @@ EOF
     print_info "   → Java path and memory settings pre-configured"
 
     # =============================================================================
-    # POLLYMC COMPATIBILITY VERIFICATION
+    # POLYMC COMPATIBILITY VERIFICATION
     # =============================================================================
 
-    # POLLYMC FUNCTIONALITY TEST: Verify PolyMC works on this system
+    # POLYMC FUNCTIONALITY TEST: Verify PolyMC works on this system
     # Test basic AppImage execution and CLI functionality before committing to use PolyMC
     # Some older systems or restricted environments may have issues with AppImages
     print_progress "Testing PolyMC compatibility and basic functionality..."
@@ -180,7 +180,7 @@ EOF
         print_success "✅ PolyMC compatibility test passed - AppImage executes properly"
 
         # =============================================================================
-        # POLLYMC INSTANCE VERIFICATION AND FINAL SETUP
+        # POLYMC INSTANCE VERIFICATION AND FINAL SETUP
         # =============================================================================
 
         # INSTANCE ACCESS VERIFICATION: Confirm PolyMC can detect and access migrated instances
@@ -208,13 +208,13 @@ EOF
         else
             print_warning "⚠️  PolyMC instance verification failed - found $poly_instances_count instances instead of 4"
             print_info "   → Falling back to PrismLauncher as primary launcher"
-            USE_POLLYMC=false
+            USE_POLYMC=false
         fi
     else
         print_warning "❌ PolyMC compatibility test failed - AppImage execution issues detected"
         print_info "   → This may be due to system restrictions, missing dependencies, or AppImage incompatibility"
         print_info "   → Falling back to PrismLauncher for gameplay (still fully functional)"
-        USE_POLLYMC=false
+        USE_POLYMC=false
     fi
 }
 
