@@ -18,23 +18,23 @@ import urllib.request
 HOME = os.path.expanduser("~")  # Get the current user's home directory
 APPNAME  = "Minecraft Splitscreen"  # Name as it will appear in Steam
 
-# Detect which launcher is being used (PollyMC only after cleanup)
+# Detect which launcher is being used (PolyMC only after cleanup)
 def detect_launcher():
-    """Detect PollyMC launcher for splitscreen gameplay."""
-    pollymc_path = f'{HOME}/.local/share/PollyMC/PollyMC-Linux-x86_64.AppImage'
-    pollymc_script = f'{HOME}/.local/share/PollyMC/minecraftSplitscreen.sh'
+    """Detect PolyMC launcher for splitscreen gameplay."""
+    polymc_path = f'{HOME}/.local/share/PolyMC/PolyMC-Linux-x86_64.AppImage'
+    polymc_script = f'{HOME}/.local/share/PolyMC/minecraftSplitscreen.sh'
     
-    # Check for PollyMC (should be the only option after installer cleanup)
-    if os.path.exists(pollymc_path) and os.access(pollymc_path, os.X_OK):
-        if os.path.exists(pollymc_script):
-            return pollymc_script, f"{HOME}/.local/share/PollyMC", "PollyMC"
+    # Check for PolyMC (should be the only option after installer cleanup)
+    if os.path.exists(polymc_path) and os.access(polymc_path, os.X_OK):
+        if os.path.exists(polymc_script):
+            return polymc_script, f"{HOME}/.local/share/PolyMC", "PolyMC"
         else:
-            # Use the script from current directory if PollyMC directory doesn't have it
-            return f"{HOME}/.local/share/PrismLauncher/minecraftSplitscreen.sh", f"{HOME}/.local/share/PollyMC", "PollyMC"
+            # Use the script from current directory if PolyMC directory doesn't have it
+            return f"{HOME}/.local/share/PrismLauncher/minecraftSplitscreen.sh", f"{HOME}/.local/share/PolyMC", "PolyMC"
     
-    # If PollyMC not found, something went wrong with installation
-    print("❌ Error: PollyMC not found!")
-    print("   Please run the Minecraft Splitscreen installer to set up PollyMC")
+    # If PolyMC not found, something went wrong with installation
+    print("❌ Error: PolyMC not found!")
+    print("   Please run the Minecraft Splitscreen installer to set up PolyMC")
     exit(1)
 
 EXE, STARTDIR, LAUNCHER_NAME = detect_launcher()
