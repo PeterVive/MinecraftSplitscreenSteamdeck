@@ -229,6 +229,7 @@ getControllerCount() {
     [ "$count" -gt 4 ] && count=4
     [ "$count" -lt 1 ] && count=1
     # Output the detected controller count
+    count=2
     echo "$count"
 }
 
