@@ -59,9 +59,9 @@ setup_steam_integration() {
         # The Steam shortcut needs to point to the correct launcher executable and script
         # Path fragments are used by the duplicate detection system
         local launcher_path=""
-        if [[ "$USE_POLLYMC" == true ]]; then
-            launcher_path="local/share/PollyMC/minecraft"  # PollyMC path signature for duplicate detection
-            print_info "Configuring Steam integration for PollyMC launcher"
+        if [[ "$USE_POLYMC" == true ]]; then
+            launcher_path="local/share/PolyMC/minecraft"  # PolyMC path signature for duplicate detection
+            print_info "Configuring Steam integration for PolyMC launcher"
         else
             launcher_path="local/share/PrismLauncher/minecraft"  # PrismLauncher path signature
             print_info "Configuring Steam integration for PrismLauncher"
@@ -209,7 +209,7 @@ setup_steam_integration() {
                 else
                     print_warning "⚠️  Steam integration script encountered errors"
                     print_info "   → You may need to add the shortcut manually"
-                    print_info "   → Common causes: PollyMC not found, Steam not installed, or permissions issues"
+                    print_info "   → Common causes: PolyMC not found, Steam not installed, or permissions issues"
                 fi
             else
                 print_warning "⚠️  Failed to download Steam integration script"
