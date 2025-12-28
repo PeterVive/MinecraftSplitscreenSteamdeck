@@ -22,25 +22,25 @@
 # 5. MOD COMPATIBILITY: Query APIs and determine compatible mod versions
 # 6. USER SELECTION: Interactive mod selection interface
 # 7. INSTANCE CREATION: Create 4 splitscreen instances with PrismLauncher CLI
-# 8. LAUNCHER OPTIMIZATION: Setup PollyMC and cleanup PrismLauncher (if successful)
+# 8. LAUNCHER OPTIMIZATION: Setup PolyMC and cleanup PrismLauncher (if successful)
 # 9. INTEGRATION: Optional Steam and desktop launcher integration
 # 10. COMPLETION: Summary report and usage instructions
 #
 # ERROR HANDLING STRATEGY:
 # - Each phase has fallback mechanisms to ensure installation can complete
-# - Non-critical failures (like PollyMC setup) don't halt the entire process
+# - Non-critical failures (like PolyMC setup) don't halt the entire process
 # - Comprehensive error reporting helps users understand any issues
 # - Multiple validation checkpoints ensure data integrity
 #
 # DUAL-LAUNCHER APPROACH:
 # The script uses an optimized strategy combining two launchers:
 # - PrismLauncher: CLI automation for reliable instance creation with proper Fabric setup
-# - PollyMC: Offline-friendly gameplay launcher without forced authentication
-# - Smart cleanup: Removes PrismLauncher after successful PollyMC setup to save space
+# - PolyMC: Offline-friendly gameplay launcher without forced authentication
+# - Smart cleanup: Removes PrismLauncher after successful PolyMC setup to save space
 main() {
     print_header "🎮 MINECRAFT SPLITSCREEN INSTALLER 🎮"
     print_info "Advanced installation system with dual-launcher optimization"
-    print_info "Strategy: PrismLauncher CLI automation → PollyMC gameplay → Smart cleanup"
+    print_info "Strategy: PrismLauncher CLI automation → PolyMC gameplay → Smart cleanup"
     echo ""
     
     # =============================================================================
@@ -113,7 +113,7 @@ main() {
     # LAUNCHER OPTIMIZATION PHASE: Advanced launcher configuration
     # =============================================================================
     
-    setup_pollymc               # Download PollyMC, migrate instances, verify, cleanup PrismLauncher
+    setup_polymc               # Download PolyMC, migrate instances, verify, cleanup PrismLauncher
     
     # =============================================================================
     # SYSTEM INTEGRATION PHASE: Optional platform integration
@@ -171,12 +171,12 @@ main() {
     
     # LAUNCHER STRATEGY REPORT: Explain which approach was successful and the benefits
     # The dual-launcher approach provides the best of both worlds when successful
-    if [[ "$USE_POLLYMC" == true ]]; then
+    if [[ "$USE_POLYMC" == true ]]; then
         echo "✅ OPTIMIZED INSTALLATION SUCCESSFUL!"
         echo ""
         echo "🔧 DUAL-LAUNCHER STRATEGY COMPLETED:"
         echo "   🛠️  PrismLauncher: CLI automation for reliable instance creation ✅ COMPLETED"
-        echo "   🎮 PollyMC: Primary launcher for offline splitscreen gameplay ✅ ACTIVE"
+        echo "   🎮 PolyMC: Primary launcher for offline splitscreen gameplay ✅ ACTIVE"
         echo "   🧹 Smart cleanup: Removes PrismLauncher after successful setup ✅ CLEANED"
         echo ""
         echo "🎯 STRATEGY BENEFITS ACHIEVED:"
@@ -185,23 +185,23 @@ main() {
         echo "   • Optimized disk usage through intelligent cleanup"
         echo "   • Best performance for splitscreen scenarios"
         echo ""
-        echo "✅ Primary launcher: PollyMC (optimized for splitscreen)"
-        echo "✅ All instances migrated and verified in PollyMC"
+        echo "✅ Primary launcher: PolyMC (optimized for splitscreen)"
+        echo "✅ All instances migrated and verified in PolyMC"
         echo "✅ Temporary PrismLauncher files cleaned up successfully"
     else
         echo "✅ FALLBACK INSTALLATION SUCCESSFUL!"
         echo ""
         echo "🔧 FALLBACK STRATEGY USED:"
         echo "   🛠️  PrismLauncher: Instance creation + primary launcher ✅ ACTIVE"
-        echo "   ⚠️  PollyMC: Download/setup encountered issues, using PrismLauncher for everything"
+        echo "   ⚠️  PolyMC: Download/setup encountered issues, using PrismLauncher for everything"
         echo ""
         echo "📋 FALLBACK EXPLANATION:"
-        echo "   • PollyMC setup failed (network issues, system compatibility, or download problems)"
+        echo "   • PolyMC setup failed (network issues, system compatibility, or download problems)"
         echo "   • PrismLauncher provides full functionality as backup launcher"
         echo "   • Splitscreen works perfectly with PrismLauncher"
         echo ""
         echo "✅ Primary launcher: PrismLauncher (proven reliability)"
-        echo "⚠️  Note: PollyMC optimization unavailable, but full functionality preserved"
+        echo "⚠️  Note: PolyMC optimization unavailable, but full functionality preserved"
     fi
     
     # =============================================================================
@@ -237,9 +237,9 @@ main() {
     
     # PRIMARY LAUNCH METHOD: Direct script execution
     echo "1. 🔧 DIRECT LAUNCH (Recommended):"
-    if [[ "$USE_POLLYMC" == true ]]; then
-        echo "   Command: $HOME/.local/share/PollyMC/minecraftSplitscreen.sh"
-        echo "   Description: Optimized PollyMC launcher with automatic controller detection"
+    if [[ "$USE_POLYMC" == true ]]; then
+        echo "   Command: $HOME/.local/share/PolyMC/minecraftSplitscreen.sh"
+        echo "   Description: Optimized PolyMC launcher with automatic controller detection"
     else
         echo "   Command: $TARGET_DIR/minecraftSplitscreen.sh"
         echo "   Description: PrismLauncher-based splitscreen with automatic controller detection"
@@ -255,7 +255,7 @@ main() {
     echo "3. 🎯 STEAM INTEGRATION:"
     echo "   Method: Launch from Steam library or Big Picture mode"
     echo "   Benefits: Steam Deck Game Mode integration, Steam Input support"
-    echo "   Availability: $(if grep -q "PollyMC\|PrismLauncher" ~/.steam/steam/userdata/*/config/shortcuts.vdf 2>/dev/null; then echo "✅ Configured"; else echo "❌ Not configured"; fi)"
+    echo "   Availability: $(if grep -q "PolyMC\|PrismLauncher" ~/.steam/steam/userdata/*/config/shortcuts.vdf 2>/dev/null; then echo "✅ Configured"; else echo "❌ Not configured"; fi)"
     echo ""
     
     # =============================================================================
@@ -266,26 +266,26 @@ main() {
     echo ""
     
     # LAUNCHER DETAILS: Technical information about the setup
-    if [[ "$USE_POLLYMC" == true ]]; then
+    if [[ "$USE_POLYMC" == true ]]; then
         echo "🛠️  LAUNCHER CONFIGURATION:"
         echo "   • Instance creation: PrismLauncher CLI (automated)"
-        echo "   • Gameplay launcher: PollyMC (offline-optimized)"
+        echo "   • Gameplay launcher: PolyMC (offline-optimized)"
         echo "   • Strategy: Best of both worlds approach"
         echo "   • Benefits: CLI automation + offline gameplay + no forced login"
     else
         echo "🛠️  LAUNCHER CONFIGURATION:"
         echo "   • Primary launcher: PrismLauncher (all functions)"
         echo "   • Strategy: Single launcher approach"
-        echo "   • Note: PollyMC optimization unavailable, but fully functional"
+        echo "   • Note: PolyMC optimization unavailable, but fully functional"
     fi
     echo ""
     
     # MINECRAFT ACCOUNT REQUIREMENTS: Important user information
     echo "💳 ACCOUNT REQUIREMENTS:"
-    if [[ "$USE_POLLYMC" == true ]]; then
+    if [[ "$USE_POLYMC" == true ]]; then
         echo "   • Microsoft account: Required for initial setup and updates"
         echo "   • Account type: PAID Minecraft Java Edition required"
-        echo "   • Login frequency: Minimal (PollyMC is offline-friendly)"
+        echo "   • Login frequency: Minimal (PolyMC is offline-friendly)"
         echo "   • Splitscreen: Uses offline accounts (P1, P2, P3, P4) after initial login"
     else
         echo "   • Microsoft account: Required for launcher access"
@@ -308,12 +308,12 @@ main() {
     # =============================================================================
     
     echo "📁 INSTALLATION LOCATIONS:"
-    if [[ "$USE_POLLYMC" == true ]]; then
-        echo "   • Primary installation: $HOME/.local/share/PollyMC/"
-        echo "   • Launcher executable: $HOME/.local/share/PollyMC/PollyMC-Linux-x86_64.AppImage"
-        echo "   • Splitscreen script: $HOME/.local/share/PollyMC/minecraftSplitscreen.sh"
-        echo "   • Instance data: $HOME/.local/share/PollyMC/instances/"
-        echo "   • Account configuration: $HOME/.local/share/PollyMC/accounts.json"
+    if [[ "$USE_POLYMC" == true ]]; then
+        echo "   • Primary installation: $HOME/.local/share/PolyMC/"
+        echo "   • Launcher executable: $HOME/.local/share/PolyMC/PolyMC-Linux-x86_64.AppImage"
+        echo "   • Splitscreen script: $HOME/.local/share/PolyMC/minecraftSplitscreen.sh"
+        echo "   • Instance data: $HOME/.local/share/PolyMC/instances/"
+        echo "   • Account configuration: $HOME/.local/share/PolyMC/accounts.json"
         echo "   • Temporary build files: Successfully removed after setup ✅"
     else
         echo "   • Primary installation: $TARGET_DIR"
@@ -336,7 +336,7 @@ main() {
     echo "   • Enhanced error handling with multiple fallback strategies"
     echo "   • Instance verification and launcher registration"
     echo "   • Smart cleanup with disk space optimization"
-    if [[ "$USE_POLLYMC" == true ]]; then
+    if [[ "$USE_POLYMC" == true ]]; then
         echo "   • Dual-launcher optimization strategy successfully implemented"
     fi
     echo "   • Cross-platform Linux compatibility (Steam Deck + Desktop)"
