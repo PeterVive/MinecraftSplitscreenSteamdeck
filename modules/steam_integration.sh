@@ -199,7 +199,7 @@ setup_steam_integration() {
             set +e
             
             print_info "   → Downloading Steam integration script..."
-            if curl -sSL https://raw.githubusercontent.com/FlyingEwok/MinecraftSplitscreenSteamdeck/main/add-to-steam.py -o "$steam_script_temp" 2>/dev/null; then
+            if curl -sSL https://raw.githubusercontent.com/PeterVive/MinecraftSplitscreenSteamdeck/main/add-to-steam.py -o "$steam_script_temp" 2>/dev/null; then
                 print_info "   → Executing Steam integration script..."
                 # Execute the downloaded script with proper error handling
                 if python3 "$steam_script_temp" 2>/dev/null; then
