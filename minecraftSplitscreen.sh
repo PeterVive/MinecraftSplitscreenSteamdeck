@@ -27,19 +27,19 @@ export target=/tmp
 # =============================
 # Function: detectLauncher
 # =============================
-# Detects PollyMC launcher for splitscreen gameplay.
+# Detects PolyMC launcher for splitscreen gameplay.
 # Returns launcher paths and executable info.
 detectLauncher() {
-    # Check if PollyMC is available
-    if [ -f "$HOME/.local/share/PollyMC/PollyMC-Linux-x86_64.AppImage" ] && [ -x "$HOME/.local/share/PollyMC/PollyMC-Linux-x86_64.AppImage" ]; then
-        export LAUNCHER_DIR="$HOME/.local/share/PollyMC"
-        export LAUNCHER_EXEC="$HOME/.local/share/PollyMC/PollyMC-Linux-x86_64.AppImage"
-        export LAUNCHER_NAME="PollyMC"
+    # Check if PolyMC is available
+    if [ -f "$HOME/.local/share/PolyMC/PolyMC-Linux-x86_64.AppImage" ] && [ -x "$HOME/.local/share/PolyMC/PolyMC-Linux-x86_64.AppImage" ]; then
+        export LAUNCHER_DIR="$HOME/.local/share/PolyMC"
+        export LAUNCHER_EXEC="$HOME/.local/share/PolyMC/PolyMC-Linux-x86_64.AppImage"
+        export LAUNCHER_NAME="PolyMC"
         return 0
     fi
 
-    echo "[Error] PollyMC not found at $HOME/.local/share/PollyMC/" >&2
-    echo "[Error] Please run the Minecraft Splitscreen installer to set up PollyMC" >&2
+    echo "[Error] PolyMC not found at $HOME/.local/share/PolyMC/" >&2
+    echo "[Error] Please run the Minecraft Splitscreen installer to set up PolyMC" >&2
     return 1
 }
 
@@ -56,7 +56,7 @@ echo "[Info] Using $LAUNCHER_NAME for splitscreen gameplay"
 # =============================
 # Checks if this script is the latest version from GitHub. If not, downloads and replaces itself.
 selfUpdate() {
-    local repo_url="https://raw.githubusercontent.com/asagilmore/MinecraftSplitscreenSteamdeck/main/minecraftSplitscreen.sh"
+    local repo_url="https://raw.githubusercontent.com/PeterVive/MinecraftSplitscreenSteamdeck/main/minecraftSplitscreen.sh"
     local tmpfile
     tmpfile=$(mktemp)
     local script_path
