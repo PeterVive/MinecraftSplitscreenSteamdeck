@@ -24,7 +24,7 @@
 #
 # ICON HIERARCHY:
 # 1. SteamGridDB custom icon (downloaded, professional appearance)
-# 2. PollyMC instance icon (if PollyMC setup successful)
+# 2. PolyMC instance icon (if PolyMC setup successful)
 # 3. PrismLauncher instance icon (fallback)
 # 4. System generic icon (ultimate fallback)
 #
@@ -101,9 +101,9 @@ create_desktop_launcher() {
         if [[ -f "$icon_path" ]]; then
             icon_desktop="$icon_path"  # Best: Custom SteamGridDB icon
             print_info "   → Using custom SteamGridDB icon for consistent branding"
-        elif [[ "$USE_POLLYMC" == true ]] && [[ -f "$HOME/.local/share/PollyMC/instances/latestUpdate-1/icon.png" ]]; then
-            icon_desktop="$HOME/.local/share/PollyMC/instances/latestUpdate-1/icon.png"  # Good: PollyMC instance icon
-            print_info "   → Using PollyMC instance icon"
+        elif [[ "$USE_POLYMC" == true ]] && [[ -f "$HOME/.local/share/PolyMC/instances/latestUpdate-1/icon.png" ]]; then
+            icon_desktop="$HOME/.local/share/PolyMC/instances/latestUpdate-1/icon.png"  # Good: PolyMC instance icon
+            print_info "   → Using PolyMC instance icon"
         elif [[ -f "$TARGET_DIR/instances/latestUpdate-1/icon.png" ]]; then
             icon_desktop="$TARGET_DIR/instances/latestUpdate-1/icon.png"  # Acceptable: PrismLauncher instance icon
             print_info "   → Using PrismLauncher instance icon"
@@ -118,13 +118,13 @@ create_desktop_launcher() {
         
         # LAUNCHER SCRIPT PATH DETECTION: Set correct executable path based on active launcher
         # The desktop file needs to point to the appropriate launcher script
-        # Different paths and descriptions for PollyMC vs PrismLauncher configurations
+        # Different paths and descriptions for PolyMC vs PrismLauncher configurations
         local launcher_script_path
         local launcher_comment
-        if [[ "$USE_POLLYMC" == true ]]; then
-            launcher_script_path="$HOME/.local/share/PollyMC/minecraftSplitscreen.sh"
-            launcher_comment="Launch Minecraft splitscreen with PollyMC (optimized for offline gameplay)"
-            print_info "   → Desktop launcher configured for PollyMC"
+        if [[ "$USE_POLYMC" == true ]]; then
+            launcher_script_path="$HOME/.local/share/PolyMC/minecraftSplitscreen.sh"
+            launcher_comment="Launch Minecraft splitscreen with PolyMC (optimized for offline gameplay)"
+            print_info "   → Desktop launcher configured for PolyMC"
         else
             launcher_script_path="$TARGET_DIR/minecraftSplitscreen.sh"
             launcher_comment="Launch Minecraft splitscreen with PrismLauncher"
@@ -235,8 +235,8 @@ EOF
         print_info "⏭️  Skipping desktop launcher creation"
         print_info "   → You can still launch via Steam (if configured) or manually run the script"
         print_info "   → Manual launch command:"
-        if [[ "$USE_POLLYMC" == true ]]; then
-            print_info "     $HOME/.local/share/PollyMC/minecraftSplitscreen.sh"
+        if [[ "$USE_POLYMC" == true ]]; then
+            print_info "     $HOME/.local/share/PolyMC/minecraftSplitscreen.sh"
         else
             print_info "     $TARGET_DIR/minecraftSplitscreen.sh"
         fi
